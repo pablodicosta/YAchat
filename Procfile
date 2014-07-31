@@ -1,1 +1,1 @@
-web: node chatclient.js
+web: node chatserver.js
