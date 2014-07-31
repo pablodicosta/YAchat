@@ -1,7 +1,7 @@
 var socket;
 
 function initializeSocket() {
-	socket = io.connect('7.219.101.137');
+	socket = io.connect(window.location.hostname);
 	socket.on('chat', function(data) {
 		$('#textarea').append(data.message);
 		$('#textarea').scrollTop($('#textarea')[0].scrollHeight);
@@ -23,7 +23,7 @@ $(document).ready(function() {
 			} else {
 				socket.emit('changename', { nickname : nickname });
 			}
-		}		
+		}
 	});
 
 	$('#send-chat').click(function() {
