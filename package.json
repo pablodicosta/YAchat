@@ -3,9 +3,12 @@
   "version": "0.0.2",
   "description": "Just another chat application",
   "main": "chatserver.js",
+  "engines": {
+    "node": "0.11.x"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start ": "node chatserver.js",
+    "start": "node chatserver.js",
     "postinstall": "./node_modules/bower/bin/bower install"
   },
   "repository": {
