@@ -1,0 +1,26 @@
+{
+  "name": "YAchat",
+  "version": "0.0.2",
+  "homepage": "https://github.com/pablodicosta/YAchat",
+  "authors": [
+    "Pablo N. Diaz Acosta <pablo.diaz.acosta@gmail.com>"
+  ],
+  "description": "Just another chat application",
+  "keywords": [
+    "chat",
+    "realtime"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.3",
+    "bootstrap": "~3.3.2"
+  }
+}

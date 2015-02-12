@@ -1,14 +1,31 @@
 {
-	"name": "chat",
-	"version": "0.0.1",
-	"private": true,
-	"engines": {
-		"node": "0.10.25",
-		"npm": "1.3.10"
-	},
-	"dependencies": {
-		"ejs" : "0.7.1",
-		"express" : "2.5.8",
-		"socket.io": "1.0.6"
-	}
+  "name": "YAchat",
+  "version": "0.0.2",
+  "description": "Just another chat application",
+  "main": "chatserver.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start ": "node chatserver.js",
+    "postinstall": "./node_modules/bower/bin/bower install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pablodicosta/YAchat.git"
+  },
+  "keywords": [
+    "chat",
+    "realtime"
+  ],
+  "author": "pablodicosta",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pablodicosta/YAchat/issues"
+  },
+  "homepage": "https://github.com/pablodicosta/YAchat",
+  "dependencies": {
+    "bower": "^1.3.12",
+    "ejs": "^2.2.4",
+    "express": "^4.11.2",
+    "socket.io": "^1.3.3"
+  }
 }

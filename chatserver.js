@@ -1,16 +1,17 @@
 'use strict'
 
 var express = require('express'),
+	http = require('http'),
 	socketio = require('socket.io');
 
-var app = express.createServer(),
-	io = socketio.listen(app);
+var app = express(),
+	server = http.Server(app),
+	io = socketio.listen(server);
 
-app.configure(function() {
-	app.set('views', __dirname + '/views');
-	app.set('view engine', 'ejs');
-	app.use(express.static(__dirname + '/public'));
-});
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+app.use('/static', express.static(__dirname + '/bower_components'));
+app.use('/static', express.static(__dirname + '/public'));
 
 app.set('view options', {
 	layout : false
@@ -20,33 +21,38 @@ app.get('/', function(req, res) {
 	res.render('index');
 });
 
-var port = process.env.PORT || 3000;
-app.listen(port);
+app.set('port', process.env.PORT || 3000);
 
-io.sockets.on('connection', function(socket) {
+server.listen(app.get('port'), function() {
 
-	socket.on('join', function(data) {
-		socket.nickname = data.nickname;
-		socket.emit('chat', { message : socket.nickname + ' ha entrado...\n' });
-		socket.broadcast.emit('chat', { message : socket.nickname + ' ha entrado...\n' });
+	io.on('connection', function(socket) {
+
+		socket.on('join', function(data) {
+			socket.nickname = data.nickname;
+			socket.emit('chat', { message : socket.nickname + ' ha entrado...\n' });
+			socket.broadcast.emit('chat', { message : socket.nickname + ' ha entrado...\n' });
+		});
+
+		socket.on('changename', function(data) {
+			var oldname = socket.nickname;
+			socket.emit('chat', { message : oldname + ' ha cambiado el nombre a ' + data.nickname + '\n' });
+			socket.broadcast.emit('chat', { message : oldname + ' ha cambiado el nombre a ' + data.nickname + '\n' });
+			socket.nickname = data.nickname;
+		});
+
+		socket.on('clientchat', function(data) {
+			var message = socket.nickname + ': ' + data.message + '\n';
+			socket.emit('chat', { message : message });
+			socket.broadcast.emit('chat', { message : message });
+		});
+
+		socket.on('disconnect', function(data) {
+			if(socket.nickname)
+				socket.broadcast.emit('chat', { message : socket.nickname + ' ha salido...' + '\n' });
+		});
+
 	});
 
-	socket.on('changename', function(data) {
-		var oldname = socket.nickname;
-		socket.emit('chat', { message : oldname + ' ha cambiado el nombre a ' + data.nickname + '\n' });
-		socket.broadcast.emit('chat', { message : oldname + ' ha cambiado el nombre a ' + data.nickname + '\n' });		
-		socket.nickname = data.nickname;
-	});
-
-	socket.on('clientchat', function(data) {
-		var message = socket.nickname + ': ' + data.message + '\n';
-		socket.emit('chat', { message : message });
-		socket.broadcast.emit('chat', { message : message });
-	});
-
-	socket.on('disconnect', function(data) {
-		if(socket.nickname) 
-			socket.broadcast.emit('chat', { message : socket.nickname + ' ha salido...' + '\n' });		
-	});
+	console.log("Server started on port " + app.get('port'));
 
 });
