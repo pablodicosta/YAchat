@@ -1,7 +1,7 @@
 var socket;
 
 function initializeSocket() {
-	socket = io('http://localhost:3000'); //(window.location.hostname);
+	socket = io(window.location.href);
 	socket.on('chat', function(data) {
 		$('#textarea').append(data.message);
 		$('#textarea').scrollTop($('#textarea')[0].scrollHeight);
