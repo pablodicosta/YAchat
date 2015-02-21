@@ -1,5 +1,7 @@
 var socket;
 
+_386 = { onePass: true };
+
 function initializeSocket() {
 	socket = io(window.location.href);
 	socket.on('chat', function(data) {
@@ -10,7 +12,7 @@ function initializeSocket() {
 
 $(document).ready(function() {
 	
-	$('.chat-widget').hide();
+	$('.chat-widget').prop("disabled", true);
 
 	$('#join-chat').click(function() {
 		var nickname = $('#nickname').val().trim();
@@ -18,8 +20,9 @@ $(document).ready(function() {
 			if(!socket) {
 				initializeSocket();
 				socket.emit('join', { nickname : nickname });
-				$('.chat-widget').show();
-				$('#join-chat').html('cambiar nombre');
+				$('.chat-widget').prop("disabled", false);
+				$('#join-chat').html('Cambiar Nombre');
+				$('#message').focus();
 			} else {
 				socket.emit('changename', { nickname : nickname });
 			}

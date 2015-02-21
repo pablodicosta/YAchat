@@ -1,11 +1,11 @@
 {
-  "name": "YAchat",
-  "version": "0.0.2",
-  "homepage": "https://github.com/pablodicosta/YAchat",
+  "name": "easychat",
+  "version": "0.0.3",
+  "homepage": "https://github.com/pablodicosta/easychat",
   "authors": [
     "Pablo N. Diaz Acosta <pablo.diaz.acosta@gmail.com>"
   ],
-  "description": "Just another chat application",
+  "description": "Basic chat application with node.js and bootstrap terminal style",
   "keywords": [
     "chat",
     "realtime"
@@ -21,6 +21,6 @@
   ],
   "dependencies": {
     "jquery": "~2.1.3",
-    "bootstrap": "~3.3.2"
+    "bootstra.386": "*"
   }
 }

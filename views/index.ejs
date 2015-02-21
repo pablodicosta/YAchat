@@ -1,52 +1,41 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>YAchat!</title>
+		<title>EASYCHAT</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" type="text/css" href="static/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="static/bootstra.386/v2.3.1/bootstrap/css/bootstrap.min.css">
 		<script type="text/javascript" src="static/jquery/dist/jquery.min.js"></script>
-		<script type="text/javascript" src="static/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="static/bootstra.386/v2.3.1/bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="socket.io/socket.io.js"></script>
 		<script type="text/javascript" src="static/chatclient.js"></script>
 	</head>
-	<body>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-4">
-					<h3>YAchat!</h3>
-				</div>
+	<body style="visibility: hidden">
+		<br>
+		<div class="row">
+			<div class="offset1 span4">
+				<h3>EASYCHAT</h3>
 			</div>
-			<div class="row">
-				<div class="col-md-10">
-					<div class="container">												
-						<div class="row">
-							<form class="form-horizontal" onsubmit="return false;">
-								<div class="form-group">
-									<div class="col-xs-4">
-										<input type="text" class="form-control" id="nickname" placeholder="pon&eacute; tu apodo">
-									</div>
-									<div class="col-sm-2">
-										<button class="btn btn-info btn-large btn-primary" type="button" id="join-chat">entrar!</button>
-									</div>
-								</div>							
-								<div class="form-group">
-									<div class="col-xs-8 col-md-10">	
-										<textarea disabled style="cursor: auto" class="form-control chat-widget" id="textarea" rows="10"></textarea>
-									</div>
-								</div>															
-								<div class="form-group">
-									<div class="col-xs-4">										
-										<input type="text" class="form-control chat-widget" id="message" placeholder="chatear aqu&iacute;">										
-									</div>
-									<div class="col-sm-2">										
-										<button type="submit" class="btn btn-primary chat-widget" id="send-chat">enviar</button>
-									</div>
-								</div>								
-							</form>
-						</div>
-					</div>
-				</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="span10 offset1">
+				<form class="form-inline" onsubmit="return false;">
+					<label class="control-label" for="nickname">Introduzca su apodo:</label>
+					<input type="text" id="nickname" class="form-control">
+					<button  type="button" id="join-chat" class="btn" style="margin-bottom: 0px">Ingresar</button>
+				</form>
 			</div>
+		</div>
+		<div class="row">
+			<div class="offset1">
+				<textarea id="textarea" class="span12" style="cursor: auto" rows="20" disabled></textarea>
+			</div>
+		</div>
+		<div class="row">
+			<form class="form-inline offset1" onsubmit="return false;">
+				<input type="text" id="message" class="span10 form-control chat-widget" autocomplete="off">
+				<button type="submit" id="send-chat" class="btn chat-widget" style="margin-bottom: 0px">Enviar</button>
+			</form>
 		</div>
 	</body>
 </html>

@@ -1,7 +1,7 @@
 {
-  "name": "YAchat",
-  "version": "0.0.2",
-  "description": "Just another chat application",
+  "name": "easychat",
+  "version": "0.0.3",
+  "description": "Basic chat application with node.js and bootstrap terminal style",
   "main": "chatserver.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/pablodicosta/YAchat.git"
+    "url": "https://github.com/pablodicosta/easychat.git"
   },
   "keywords": [
     "chat",
@@ -19,9 +19,9 @@
   "author": "pablodicosta",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pablodicosta/YAchat/issues"
+    "url": "https://github.com/pablodicosta/easychat/issues"
   },
-  "homepage": "https://github.com/pablodicosta/YAchat",
+  "homepage": "https://github.com/pablodicosta/easychat",
   "dependencies": {
     "bower": "^1.3.12",
     "ejs": "^2.2.4",

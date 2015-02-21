@@ -10,8 +10,12 @@ var app = express(),
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
+
 app.use('/static', express.static(__dirname + '/bower_components'));
 app.use('/static', express.static(__dirname + '/public'));
+
+// Fix for wrong Bootstra.386 font folder location
+app.use('*/fonts', express.static(__dirname + '/bower_components/bootstra.386/v2.3.1/fonts'));
 
 app.set('view options', {
 	layout : false
